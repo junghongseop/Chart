@@ -6,9 +6,6 @@ import {
   YAxis,
   Tooltip,
   CartesianGrid,
-  PieChart,
-  Pie,
-  Cell,
   AreaChart,
   Area,
   ResponsiveContainer,
@@ -19,13 +16,7 @@ import {
   PolarRadiusAxis,
 } from "recharts";
 import LineChart from "./components/LineChart";
-
-const pieData = [
-  { name: "Group A", value: 400 },
-  { name: "Group B", value: 300 },
-  { name: "Group C", value: 300 },
-  { name: "Group D", value: 200 },
-];
+import Pie_Chart from "./components/PieChart";
 
 const areaData = Array.from({ length: 10 }, (_, index) => ({
   name: `Area ${index + 1}`,
@@ -77,7 +68,11 @@ function App() {
             <XAxis dataKey="month" />
             <YAxis />
             <Tooltip />
-            <Bar dataKey="metewHomeruns" fill="rgb(29, 70, 125)" name="데이비슨 홈런" />
+            <Bar
+              dataKey="metewHomeruns"
+              fill="rgb(29, 70, 125)"
+              name="데이비슨 홈런"
+            />
             <Bar dataKey="kimHomeruns" fill="#D00000" name="김도영 홈런" />
           </BarChart>
         </ResponsiveContainer>
@@ -93,23 +88,7 @@ function App() {
 
       <ChartContainer>
         <h2>원 그래프</h2>
-        <ResponsiveContainer width="100%" height={300}>
-          <PieChart>
-            <Tooltip />
-            <Pie
-              data={pieData}
-              cx="50%"
-              cy="50%"
-              outerRadius={80}
-              fill="#8884d8"
-              dataKey="value"
-            >
-              {pieData.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill={getRandomColor()} />
-              ))}
-            </Pie>
-          </PieChart>
-        </ResponsiveContainer>
+        <Pie_Chart />
       </ChartContainer>
 
       <ChartContainer>
@@ -157,15 +136,6 @@ function App() {
     </Apppage>
   );
 }
-
-const getRandomColor = () => {
-  const letters = "0123456789ABCDEF";
-  let color = "#";
-  for (let i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
-};
 
 export default App;
 
