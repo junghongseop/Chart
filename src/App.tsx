@@ -3,33 +3,29 @@ import LineChart from "./components/LineChart";
 
 function App() {
   const metew = [
-    { name: "3월", uv: 400, pv: 200, amt: 200 },
-    { name: "4월", uv: 100, pv: 2400, amt: 200 },
-    { name: "5월", uv: 200, pv: 2400, amt: 200 },
-    { name: "6월", uv: 300, pv: 2400, amt: 200 },
-    { name: "7월", uv: 200, pv: 2400, amt: 200 },
-    { name: "8월", uv: 500, pv: 2400, amt: 200 },
-    { name: "9월", uv: 500, pv: 2400, amt: 200 },
-    { name: "10월", uv: 500, pv: 2400, amt: 200 },
+    { name: "3월~4월", games: 23, homeruns: 5 },
+    { name: "5월", games: 25, homeruns: 8 },
+    { name: "6월", games: 24, homeruns: 12 },
+    { name: "7월", games: 18, homeruns: 7 },
+    { name: "8월", games: 20, homeruns: 6 },
+    { name: "9월이상", games: 21, homeruns: 8 },
   ];
 
   const kim = [
-    { name: "3월", uv: 400, pv: 200, amt: 200 },
-    { name: "4월", uv: 100, pv: 2400, amt: 200 },
-    { name: "5월", uv: 200, pv: 2400, amt: 200 },
-    { name: "6월", uv: 300, pv: 2400, amt: 200 },
-    { name: "7월", uv: 200, pv: 2400, amt: 200 },
-    { name: "8월", uv: 500, pv: 2400, amt: 200 },
-    { name: "9월", uv: 500, pv: 2400, amt: 200 },
-    { name: "10월", uv: 500, pv: 2400, amt: 200 },
+    { name: "3월~4월", games: 31, homeruns: 10 },
+    { name: "5월", games: 23, homeruns: 3 },
+    { name: "6월", games: 24, homeruns: 8 },
+    { name: "7월", games: 22, homeruns: 7 },
+    { name: "8월", games: 23, homeruns: 6 },
+    { name: "9월이상", games: 18, homeruns: 4 },
   ];
 
   return (
     <Apppage>
       <h1>Line Chart Example</h1>
       <Column>
-        <LineChart data={metew} />
-        <LineChart data={kim} />
+        <LineChart data={metew} name="데이비슨" />
+        <LineChart data={kim} name="김도영"/>
       </Column>
     </Apppage>
   );
@@ -38,11 +34,13 @@ function App() {
 export default App;
 
 const Apppage = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   width: 100%;
   height: 100%;
-  align-items: center;
-  text-align: center;
-  justify-content: center;
 `;
 
 const Column = styled.div`
@@ -50,4 +48,5 @@ const Column = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  gap: 20px;
 `;

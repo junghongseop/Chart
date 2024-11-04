@@ -8,24 +8,52 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
+import styled from "styled-components";
 
 interface ChartProps {
-  data: { uv: number; name: string }[];
+  data: { name: string; games: number; homeruns: number }[];
+  name: string;
 }
 
-const LineChart = ({ data }: ChartProps) => {
+const LineChart = ({ data, name }: ChartProps) => {
   return (
-    <ResponsiveContainer width="40%" height={300}>
-      <RechartsLineChart data={data}>
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" />
-        <YAxis />
-        <Tooltip />
-        <Legend />
-        <Line type="monotone" dataKey="uv" stroke="#8884d8" />
-      </RechartsLineChart>
-    </ResponsiveContainer>
+    <ChartContainer>
+      <ResponsiveContainer width={600} height={300}>
+        <RechartsLineChart data={data}>
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="name" />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+          <Line
+            type="monotone"
+            dataKey="games"
+            stroke="#8884d8"
+            name="경기 수"
+          />
+          <Line
+            type="monotone"
+            dataKey="homeruns"
+            stroke="#82ca9d"
+            name="홈런 수"
+          />
+        </RechartsLineChart>
+      </ResponsiveContainer>
+      <NameLabel>{name}</NameLabel>
+    </ChartContainer>
   );
 };
 
 export default LineChart;
+
+const ChartContainer = styled.div`
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
+const NameLabel = styled.div`
+  margin-top: 10px;
+  font-size: 1.2rem;
+`;
